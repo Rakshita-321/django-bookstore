@@ -1,17 +1,25 @@
 # Docker Commands
 
-Start docker
+1. Start docker
 docker-compose up -d --build
 
-1. Create an app
+2. Create an app
 docker-compose exec web python manage.py startapp app_name
 
-2. Run migrations
+3. Run migrations
 docker-compose exec web python manage.py makemigrations
 docker-compose exec web python manage.py migrate
 
-3. Create Superuser
+## Create Superuser
 docker-compose exec web python manage.py createsuperuser
 
-4. Docker Tests
+## Docker Tests
 docker-compose exec web python manage.py test
+
+## See the logs
+docker-compose logs 
+
+## Restart the server
+docker-compose down
+docker-compose up -d
+
