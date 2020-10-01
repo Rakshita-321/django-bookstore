@@ -1,3 +1,3 @@
 # Django Bookstore
 
-A bookstore created with Python, Django, PostgreSQL and Docker.
+A bookstore created with Python, Django, Docker and PostgreSQL.
