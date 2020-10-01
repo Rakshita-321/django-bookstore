@@ -1,0 +1,10 @@
+h1 {
+    /* font-size: 2em;
+    font-weight: bolder; */
+    color: red;
+}
+
+.bookcover {
+    height: 300px;
+    width: auto;
+}
