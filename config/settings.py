@@ -42,14 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     # Third party apps
     'crispy_forms',
+    'allauth',
+    'allauth.account',
 
     # Project apps
     'accounts',
     'pages',
 ]
+
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -142,7 +146,29 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-LOGIN_REDIRECT_URL = 'pages:home'
-LOGOUT_REDIRECT_URL = 'pages:home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
+
+# django-allauth config
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = 'pages:home'
+#LOGOUT_REDIRECT_URL = 'pages:home' # Send to homepage instead of django/allauth page
+ACCOUNT_LOGOUT_REDIRECT = 'pages:home'
+
+ACCOUNT_SESSION_REMEMBER = True # Removes 'Remember Me' checkbox
+
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
