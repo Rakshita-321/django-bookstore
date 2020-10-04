@@ -8,4 +8,5 @@
     {{ form|crispy }}
     <button class="btn btn-primary" type="submit">Log In</button>
 </form>
+<p class="mt-3"><a href="{% url 'account_reset_password' %}">Forgotten password?</a></p>
 {% endblock content %}

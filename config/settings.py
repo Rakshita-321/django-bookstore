@@ -25,17 +25,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(BASE_DIR / 'config.json') as config_file:
-    config = json.load(config_file)
+with open(BASE_DIR / 'config.json') as f:
+    config = json.load(f)
 
 SECRET_KEY = config['SECRET_KEY']
 # SECRET_KEY = env("DJANGO_SECRET_KEY") # testing docker-compose.yml enviroment variables -> need to move out source control
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = env.bool("DJANGO_DEBUG")
+DEBUG = env.bool('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     # Project apps
     'accounts',
     'pages',
+    'books',
 ]
 
 
@@ -159,8 +160,6 @@ STATICFILES_FINDERS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-
-
 # django-allauth config
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = [
@@ -181,3 +180,5 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
