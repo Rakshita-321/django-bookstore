@@ -6,3 +6,4 @@ db.sqlite3
 docker_commands.md
 docker-compose-prod.yml
 config.json
+project_notes.md
