@@ -28,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 with open(BASE_DIR / 'config.json') as f:
     config = json.load(f)
 
-SECRET_KEY = config['SECRET_KEY']
-# SECRET_KEY = env("DJANGO_SECRET_KEY") # testing docker-compose.yml enviroment variables -> need to move out source control
+#SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY = env("DJANGO_SECRET_KEY") # testing docker-compose.yml enviroment variables -> need to move out source control
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = env.bool('DJANGO_DEBUG')
+DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost']
 
@@ -200,3 +200,12 @@ INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 604800
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
+# Security
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+SECURE_HSTS_SECONDS = env.int("DJANGO_SECURE_HSTS_SECONDS", default=2592000)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
+SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
+
+SESSION_COOKIE_SECURE = env.bool("DJANGO_SESSION_COOKIE_SECURE", default=True)
+CSRF_COOKIE_SECURE = env.bool("DJANGO_CSRF_COOKIE_SECURE", default=True)

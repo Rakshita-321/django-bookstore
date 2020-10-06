@@ -1,4 +1,8 @@
+__pycache__/
+db.sqlite3
+.DS_Store
 .env
 .vscode
 docker_commands.md
+docker-compose-prod.yml
 config.json
