@@ -5,4 +5,4 @@ A bookstore created using:
 - Django
 - Postgres 
 - Docker
-- Deployed with Heroku.
+- Deployed with Heroku
