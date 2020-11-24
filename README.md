@@ -1,3 +1,8 @@
 # Django Bookstore
 
-A bookstore created with Python, Django, Docker and PostgreSQL - Deployed with Heroku.
+A bookstore created using:
+- Python
+- Django
+- Postgres 
+- Docker
+- Deployed with Heroku.
